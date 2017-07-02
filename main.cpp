@@ -41,12 +41,20 @@ int main(){
     cout<<"Select color:"<<endl;
     cout<<"Symbol - exit"<<endl<<"1-red"<<endl<<"2-orange"<<endl<<"3-yellow"<<endl
        <<"4-green"<<endl;;
+    try{
+        while(cin>>value){
+            colors.push_back(value);
+            if(value<=0||value>4)
+                throw 1;
+        }
+        colors.shrink_to_fit();
+        copy(colors.begin(),colors.end(), ostream_iterator<int>(cout," "));
 
-    while(cin>>value){
-        colors.push_back(value);
     }
-    colors.shrink_to_fit();
-    copy(colors.begin(),colors.end(), ostream_iterator<int>(cout," "));
+    catch(int){
+        cout<<"We have only 4 colors...";
+        return 1;
+    }
 
     bool **search_square=new bool*[size];
     for (int i=0;i<size;i++)

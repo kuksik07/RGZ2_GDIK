@@ -30,35 +30,11 @@ int main(){
         {
             mas[i][j]=rand()%4+0;
             cout<<mas[i][j]<<" ";
-            if(mas[i][j]==0)
-            {
-                mas_bool[i][j]=false;
-                if(i!=(size-1))
-                    mas_bool[i+1][j]=false;
-                if(j!=(size-1))
-                    mas_bool[i][j+1]=false;
-                if(j!=0)
-                    mas_bool[i][j-1]=false;
-                if(i!=0)
-                    mas_bool[i-1][j]=false;
-            }
-            else if(mas[i][j]!=0&&mas_bool[i][j]!=false)
-                mas_bool[i][j]=true;
         }
         cout<<endl;
     }
     cout<<endl;
 
-    cout<<"Mark borders near zeros - false. The rest is true."<<endl;
-    for (int i=0;i<size;i++)
-    {
-        for (int j=0;j<size;j++)
-        {
-            cout<<mas_bool[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl;
     int value;
     vector<int> colors;
 
@@ -86,15 +62,13 @@ int main(){
             for (int j=0;j<size;j++)
             {
                 value=colors[k];
-                if((mas[i][j]==value&&mas_bool[i][j])){
+                if((mas[i][j]==value&&mas[i][j])){
                     search_square[i][j]=true;
                 }
             }
         }
     }
     cout<<endl;
-
-
 
     for (int i=0;i<size;i++)
     {
@@ -133,11 +107,9 @@ int main(){
     cout<<endl;
     for(int i=0; i<size; i++){
         delete []mas[i];
-        delete []mas_bool[i];
         delete []search_square[i];
     }
     delete []mas;
-    delete []mas_bool;
     delete []search_square;
     return 0;
 }

@@ -28,7 +28,7 @@ int main(){
     {
         for (int j=0;j<size;j++)
         {
-            mas[i][j]=rand()%4+0;
+            mas[i][j]=rand()%5+0;
             cout<<mas[i][j]<<" ";
         }
         cout<<endl;
